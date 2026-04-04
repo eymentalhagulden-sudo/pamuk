@@ -99,7 +99,6 @@
             border-left: 5px solid #66bb6a;
             margin: 40px 0;
         }
-        /* 3D Model Alanı */
         .model-section {
             margin: 60px 0;
             padding: 35px;
@@ -365,12 +364,12 @@
     </div>
 
     <script>
-        const GEMINI_API_KEY = "AIzaSyD4OHivHjqRQtdLzE0ARD9tcPrXlThpd60";
+        const GEMINI_API_KEY = "AIzaSyCetw_27UaF0CpThJr4KBtKezJTf7P39SI";
 
         const SYSTEM_PROMPT = `Sen pamuk üretimi, pamuk tarımı ve tarım robotikleri konusunda uzman bir Türk asistanısın. 
 Kullanıcılar sana https://eymentalhagulden-sudo.github.io/pamuk/ sayfasındaki içerikten sorular soracak.
 Cevaplarını dostça, anlaşılır ve Türkçe ver. 
-Site içeriğini iyi bil: Türkiye'de pamuk üretimi sorunları, robotik sistemler, 3D modeller (meshy.ai linki ve .3mf dosyası), avantajlar vs.
+Site içeriğini iyi bil: Türkiye'de pamuk üretimi sorunları, robotik sistemler, 3D modeller, avantajlar vs.
 Eğer emin olmadığın bir şey sorulursa dürüstçe söyle.`;
 
         function toggleChat() {
@@ -395,7 +394,6 @@ Eğer emin olmadığın bir şey sorulursa dürüstçe söyle.`;
             addMessage('user', msg);
             input.value = '';
 
-            // Loading animasyonu
             const loadingId = 'loading-' + Date.now();
             const loadingBubble = document.createElement('div');
             loadingBubble.id = loadingId;
@@ -423,7 +421,7 @@ Eğer emin olmadığın bir şey sorulursa dürüstçe söyle.`;
                 const data = await response.json();
 
                 if (!response.ok) {
-                    throw new Error(`HTTP ${response.status} - ${data.error?.message || 'Bilinmeyen hata'}`);
+                    throw new Error(data.error?.message || `HTTP ${response.status}`);
                 }
 
                 let answer = data.candidates?.[0]?.content?.parts?.[0]?.text || "Cevap alınamadı.";
@@ -435,12 +433,11 @@ Eğer emin olmadığın bir şey sorulursa dürüstçe söyle.`;
             } catch (err) {
                 clearInterval(dotInterval);
                 document.getElementById(loadingId).remove();
-                addMessage('bot', `Hata oluştu: ${err.message}<br><br>Sayfayı yenilemeyi dene veya yeni API key al.`);
+                addMessage('bot', `Hata: ${err.message}<br><br>Sayfayı yenile ve tekrar dene.`);
                 console.error(err);
             }
         }
 
-        // Enter tuşu ile gönderme
         document.getElementById('user-input').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') sendMessage();
         });
