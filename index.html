@@ -132,9 +132,114 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         body.dark .pamuk-image { box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+
+        /* ==================== DÜZELTİLMİŞ AI ASİSTAN (Sağ altta güzel dursun) ==================== */
+        #pamuk-assistant {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 9999;
+            font-family: 'Inter', sans-serif;
+        }
+        #pamuk-assistant button {
+            background: linear-gradient(135deg, #2e7d32, #43a047);
+            color: white;
+            border: none;
+            padding: 14px 22px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        #pamuk-assistant button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(46, 125, 50, 0.5);
+        }
+        #chat-window {
+            display: none;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 360px;
+            height: 520px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            overflow: hidden;
+            flex-direction: column;
+        }
+        body.dark #chat-window { background: #1a1a1a; }
+        #chat-header {
+            background: linear-gradient(135deg, #2e7d32, #43a047);
+            color: white;
+            padding: 14px 18px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #chat-messages {
+            flex: 1;
+            padding: 18px;
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+        body.dark #chat-messages { background: #111; }
+        .chat-bubble {
+            margin-bottom: 14px;
+            padding: 12px 16px;
+            border-radius: 14px;
+            max-width: 85%;
+            font-size: 15.5px;
+        }
+        .user-bubble {
+            background: #2e7d32;
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+        .bot-bubble {
+            background: #e8f0e8;
+            color: #1f1f1f;
+            margin-right: auto;
+            border-bottom-left-radius: 4px;
+        }
+        body.dark .bot-bubble { background: #2a2a2a; color: #e0e0e0; }
+        #chat-input-area {
+            padding: 12px;
+            background: white;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 8px;
+        }
+        body.dark #chat-input-area { background: #1a1a1a; border-color: #444; }
+        #user-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            outline: none;
+            font-size: 15px;
+        }
+        body.dark #user-input { background: #222; color: #eee; border-color: #555; }
+        #send-btn {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
             <a href="#" class="logo">
@@ -151,6 +256,7 @@
         </div>
     </header>
 
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
             <span class="badge">TARIM TEKNOLOJİLERİ</span>
@@ -227,7 +333,7 @@
         </div>
     </footer>
 
-    <!-- ==================== PAMUK AI ASİSTAN ==================== -->
+    <!-- AI Asistan - Sağ altta güzel duruyor -->
     <div id="pamuk-assistant">
         <button onclick="toggleChat()">
             🤖 Pamuk Asistanı
@@ -250,7 +356,6 @@
         const GEMINI_API_KEY = "AIzaSyB3IiKKGWLNL-XKZIeZMLHLPzCGSGFuWrw";
 
         const SYSTEM_PROMPT = `Sen pamuk üretimi, pamuk tarımı ve tarım robotikleri konusunda uzman bir Türk asistanısın. 
-Kullanıcılar sana bu sayfadaki içerikten sorular soracak.
 Cevaplarını dostça, anlaşılır ve Türkçe ver.`;
 
         function toggleChat() {
@@ -272,17 +377,16 @@ Cevaplarını dostça, anlaşılır ve Türkçe ver.`;
             const msg = input.value.trim();
             if (!msg) return;
 
-            // Özel komutlar
-            const upperMsg = msg.toUpperCase();
-            if (upperMsg === '!ROBO') {
+            const upper = msg.toUpperCase();
+            if (upper === '!ROBO') {
                 document.body.classList.toggle('dark');
                 input.value = '';
                 return;
             }
-            if (upperMsg === 'PO') {
-                window.close();           // Sekmeyi kapatmayı dener
+            if (upper === 'PO') {
+                window.close();
                 document.body.innerHTML = '<h1 style="text-align:center; margin-top:100px; color:#e74c3c;">Site kapatılıyor...</h1>';
-                setTimeout(() => { window.location.href = "about:blank"; }, 800);
+                setTimeout(() => window.location.href = "about:blank", 800);
                 return;
             }
 
@@ -315,9 +419,7 @@ Cevaplarını dostça, anlaşılır ve Türkçe ver.`;
 
                 const data = await response.json();
 
-                if (!response.ok) {
-                    throw new Error(data.error?.message || `HTTP ${response.status}`);
-                }
+                if (!response.ok) throw new Error(data.error?.message || `HTTP ${response.status}`);
 
                 let answer = data.candidates?.[0]?.content?.parts?.[0]?.text || "Cevap alınamadı.";
 
@@ -336,7 +438,6 @@ Cevaplarını dostça, anlaşılır ve Türkçe ver.`;
             }
         }
 
-        // Enter tuşu ile gönderme
         document.getElementById('user-input').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') sendMessage();
         });
