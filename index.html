@@ -111,7 +111,7 @@
         .model-btn {
             display: inline-block;
             background-color: #1976d2;
-            color: White;
+            color: white;
             padding: 14px 32px;
             border-radius: 8px;
             text-decoration: none;
@@ -160,6 +160,107 @@
             color: #666666;
             border-top: 1px solid #eeeeee;
         }
+
+        /* ==================== AI ASİSTAN STİLLERİ ==================== */
+        #pamuk-assistant {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 9999;
+            font-family: 'Inter', sans-serif;
+        }
+        #pamuk-assistant button {
+            background: linear-gradient(135deg, #2e7d32, #43a047);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        #pamuk-assistant button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(46, 125, 50, 0.5);
+        }
+        #chat-window {
+            display: none;
+            position: absolute;
+            bottom: 75px;
+            right: 0;
+            width: 360px;
+            height: 520px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            overflow: hidden;
+            flex-direction: column;
+        }
+        #chat-header {
+            background: linear-gradient(135deg, #2e7d32, #43a047);
+            color: white;
+            padding: 14px 18px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #chat-messages {
+            flex: 1;
+            padding: 18px;
+            overflow-y: auto;
+            background: #f8f9fa;
+            line-height: 1.6;
+        }
+        .chat-bubble {
+            margin-bottom: 14px;
+            padding: 12px 16px;
+            border-radius: 14px;
+            max-width: 85%;
+            font-size: 15.5px;
+        }
+        .user-bubble {
+            background: #2e7d32;
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+        .bot-bubble {
+            background: #e8f0e8;
+            color: #1f1f1f;
+            margin-right: auto;
+            border-bottom-left-radius: 4px;
+        }
+        #chat-input-area {
+            padding: 12px;
+            background: white;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 8px;
+        }
+        #user-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            outline: none;
+            font-size: 15px;
+        }
+        #send-btn {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
@@ -190,10 +291,8 @@
     <article class="container">
         <p>Pamuk üretimi, Türkiye ekonomisi için stratejik öneme sahip bir tarım koludur. Ülkemiz dünya pamuk üretiminde önemli bir konumda yer almaktadır. Ancak son yıllarda yaşanan işgücü sıkıntısı, yükselen maliyetler ve iklim değişikliğiyle birlikte geleneksel yöntemler yetersiz kalmaya başlamıştır.</p>
         <p>Bu noktada <strong>robotik sistemler ve otomasyon teknolojileri</strong>, pamuk tarımında verimliliği artırmak, maliyetleri düşürmek ve kaliteyi yükseltmek için güçlü bir çözüm sunmaktadır.</p>
-
+        
         <h2>3D Modellerimiz</h2>
-       
-        <!-- 1. Interaktif 3D Model -->
         <div class="model-section">
             <h2>1. Pamuk Bitkisi ve Sensör Sistemi (Interaktif 3D)</h2>
             <p>Aşağıdaki butona tıklayarak modeli yeni sekmede inceleyebilirsiniz. Fare ile döndürebilir, yakınlaştırabilir ve detaylarını görebilirsiniz.</p>
@@ -201,8 +300,6 @@
                 3D Modeli İncele →
             </a>
         </div>
-
-        <!-- 2. İndirilebilir 3D Model -->
         <div class="model-section">
             <h2>2. Yeni Kutu 3D Modeli</h2>
             <p>Bu model .3mf formatındadır. Creality Print veya uyumlu slicer programlarında açabilirsiniz.</p>
@@ -212,7 +309,7 @@
 
         <h2>Robotik Sistemlerin Pamuk Tarımındaki Rolü</h2>
         <p>Robotik sistemler, tohum ekiminden hasada, sulamadan zararlı kontrolüne kadar birçok süreçte kullanılabilmektedir.</p>
-        
+       
         <div class="highlight">
             <strong>Başlıca Kullanım Alanları:</strong><br>
             • Hassas tohum ekimi ve fide dikimi<br>
@@ -248,5 +345,90 @@
             <p>&copy; RoboZeka — Pamuk Üretiminde Akıllı Çözümler</p>
         </div>
     </footer>
+
+    <!-- ==================== PAMUK AI ASİSTAN ==================== -->
+    <div id="pamuk-assistant">
+        <button onclick="toggleChat()">
+            🤖 Pamuk Asistanı
+        </button>
+
+        <div id="chat-window">
+            <div id="chat-header">
+                <span>🤖 Pamuk Robotik Asistanı</span>
+                <span onclick="toggleChat()" style="cursor:pointer; font-size:22px;">×</span>
+            </div>
+            <div id="chat-messages"></div>
+            <div id="chat-input-area">
+                <input id="user-input" type="text" placeholder="Pamuk robotları hakkında bir şey sor...">
+                <button id="send-btn" onclick="sendMessage()">↑</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // === AYARLAR ===
+        const GEMINI_API_KEY = "BURAYA_KEVINİ_YAPIŞTIR";   // ← Buraya kendi Gemini API key'ini yaz!
+
+        const SYSTEM_PROMPT = `Sen pamuk üretimi, pamuk tarımı ve tarım robotikleri konusunda uzman bir Türk asistanısın. 
+Kullanıcılar sana https://eymentalhagulden-sudo.github.io/pamuk/ sayfasındaki içerikten sorular soracak.
+Cevaplarını dostça, anlaşılır ve Türkçe ver. 
+Site içeriğini iyi bil: Türkiye'de pamuk üretimi sorunları, robotik sistemler, 3D modeller (meshy.ai linki ve .3mf dosyası), avantajlar vs.
+Eğer soruya tam emin değilsen dürüstçe söyle.`;
+
+        function toggleChat() {
+            const win = document.getElementById('chat-window');
+            win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function addMessage(sender, text) {
+            const messages = document.getElementById('chat-messages');
+            const bubble = document.createElement('div');
+            bubble.className = `chat-bubble ${sender}-bubble`;
+            bubble.innerHTML = text.replace(/\n/g, '<br>');
+            messages.appendChild(bubble);
+            messages.scrollTop = messages.scrollHeight;
+            return bubble;
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('user-input');
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            addMessage('user', msg);
+            input.value = '';
+
+            const loading = addMessage('bot', 'Düşünüyorum... 🤔');
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [
+                                { text: SYSTEM_PROMPT },
+                                { text: "Kullanıcı sorusu: " + msg }
+                            ]
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+                const answer = data.candidates[0].content.parts[0].text;
+
+                loading.remove();
+                addMessage('bot', answer);
+            } catch (err) {
+                loading.remove();
+                addMessage('bot', 'Üzgünüm, şu anda cevap veremedim. Lütfen tekrar dene.');
+            }
+        }
+
+        // Enter tuşu ile gönderme
+        document.getElementById('user-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
 </body>
 </html>
