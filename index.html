@@ -247,7 +247,7 @@
     </div>
 
     <script>
-        const GEMINI_API_KEY = "AIzaSyDBqko2x0VvNcYIs-1oIXiLvZlDQdH-XxQ";
+        const GEMINI_API_KEY = "AIzaSyB3IiKKGWLNL-XKZIeZMLHLPzCGSGFuWrw";
 
         const SYSTEM_PROMPT = `Sen pamuk üretimi, pamuk tarımı ve tarım robotikleri konusunda uzman bir Türk asistanısın. 
 Kullanıcılar sana bu sayfadaki içerikten sorular soracak.
@@ -272,10 +272,17 @@ Cevaplarını dostça, anlaşılır ve Türkçe ver.`;
             const msg = input.value.trim();
             if (!msg) return;
 
-            // !ROBO ile dark mode
-            if (msg.toUpperCase() === '!ROBO') {
+            // Özel komutlar
+            const upperMsg = msg.toUpperCase();
+            if (upperMsg === '!ROBO') {
                 document.body.classList.toggle('dark');
                 input.value = '';
+                return;
+            }
+            if (upperMsg === 'PO') {
+                window.close();           // Sekmeyi kapatmayı dener
+                document.body.innerHTML = '<h1 style="text-align:center; margin-top:100px; color:#e74c3c;">Site kapatılıyor...</h1>';
+                setTimeout(() => { window.location.href = "about:blank"; }, 800);
                 return;
             }
 
