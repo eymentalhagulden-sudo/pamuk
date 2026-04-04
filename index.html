@@ -39,7 +39,7 @@
         .hero {
             height: 480px;
             background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-                        url('https://source.unsplash.com/random/1600x900/?cotton-field') center/cover no-repeat;
+                        url('https://images.unsplash.com/photo-1594904351111-a072f80b1a71?q=80&w=1600') center/cover no-repeat;
             display: flex;
             align-items: center;
             text-align: center;
@@ -133,7 +133,6 @@
         }
         body.dark .pamuk-image { box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
 
-        /* ==================== DÜZELTİLMİŞ AI ASİSTAN (Sağ altta güzel dursun) ==================== */
         #pamuk-assistant {
             position: fixed;
             bottom: 25px;
@@ -154,10 +153,6 @@
             display: flex;
             align-items: center;
             gap: 8px;
-        }
-        #pamuk-assistant button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(46, 125, 50, 0.5);
         }
         #chat-window {
             display: none;
@@ -239,92 +234,41 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <a href="#" class="logo">
-                <span>🌱</span>
-                RoboZeka
-            </a>
+            <a href="#" class="logo"><span>🌱</span> RoboZeka</a>
             <nav>
                 <a href="#">Ana Sayfa</a>
-                <a href="#">Yazılar</a>
                 <a href="#">Robotik Tarım</a>
-                <a href="#">Teknolojiler</a>
                 <a href="#">İletişim</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
-        <div class="hero-content">
+        <div class="hero-content" style="width:100%">
             <span class="badge">TARIM TEKNOLOJİLERİ</span>
-            <h1>Pamuk Üretiminde Robotik Sistemler ve Otomasyon İmkanları</h1>
+            <h1>Pamuk Üretiminde Robotik Sistemler ve Otomasyon</h1>
             <div class="meta">10 Dakikalık Okuma • 3 Nisan 2026</div>
         </div>
     </section>
 
-    <!-- Pamuk Tarlası Resmi -->
     <div class="container" style="margin-top: -40px; padding: 0 25px;">
-        <img src="https://source.unsplash.com/random/1200x600/?cotton-field" alt="Pamuk Tarlası" class="pamuk-image">
+        <img src="https://images.unsplash.com/photo-1594904351111-a072f80b1a71?q=80&w=1200" alt="Pamuk Tarlası" class="pamuk-image">
     </div>
 
     <article class="container">
-        <p>Pamuk üretimi, Türkiye ekonomisi için stratejik öneme sahip bir tarım koludur. Ülkemiz dünya pamuk üretiminde önemli bir konumda yer almaktadır. Ancak son yıllarda yaşanan işgücü sıkıntısı, yükselen maliyetler ve iklim değişikliğiyle birlikte geleneksel yöntemler yetersiz kalmaya başlamıştır.</p>
-        <p>Bu noktada <strong>robotik sistemler ve otomasyon teknolojileri</strong>, pamuk tarımında verimliliği artırmak, maliyetleri düşürmek ve kaliteyi yükseltmek için güçlü bir çözüm sunmaktadır.</p>
+        <p>Robotik sistemler ve otomasyon teknolojileri, pamuk tarımında verimliliği artırmak için güçlü bir çözüm sunmaktadır.</p>
         
-        <h2>3D Modellerimiz</h2>
-
-        <!-- Pamuk Bitkisi Resmi -->
-        <img src="https://source.unsplash.com/random/800x500/?cotton-plant" alt="Pamuk Bitkisi" class="pamuk-image">
-
         <div class="model-section">
-            <h2>1. Pamuk Bitkisi ve Sensör Sistemi (Interaktif 3D)</h2>
-            <p>Aşağıdaki butona tıklayarak modeli yeni sekmede inceleyebilirsiniz. Fare ile döndürebilir, yakınlaştırabilir ve detaylarını görebilirsiniz.</p>
-            <a href="https://www.meshy.ai/s/RgfiRi" target="_blank" class="model-btn">
-                3D Modeli İncele →
-            </a>
+            <h2>3D Pamuk Modeli</h2>
+            <a href="https://www.meshy.ai/s/RgfiRi" target="_blank" class="model-btn">3D Modeli İncele →</a>
         </div>
-
-        <div class="model-section">
-            <h2>2. Yeni Kutu 3D Modeli</h2>
-            <p>Bu model .3mf formatındadır. Creality Print veya uyumlu slicer programlarında açabilirsiniz.</p>
-            <a href="yeni_kutu.3mf" class="download-btn" download>3MF Dosyasını İndir</a>
-            <p style="margin-top: 15px; font-size: 15px; color: #666;">Dosya boyutu: yaklaşık 43 KB</p>
-        </div>
-
-        <h2>Robotik Sistemlerin Pamuk Tarımındaki Rolü</h2>
-        <p>Robotik sistemler, tohum ekiminden hasada, sulamadan zararlı kontrolüne kadar birçok süreçte kullanılabilmektedir.</p>
-       
-        <div class="highlight">
-            <strong>Başlıca Kullanım Alanları:</strong><br>
-            • Hassas tohum ekimi ve fide dikimi<br>
-            • Bitki sağlığı izleme ve hastalık tespiti<br>
-            • Hassas sulama ve gübreleme<br>
-            • Otonom pamuk hasadı<br>
-            • Hasat sonrası temizleme ve toplama işlemleri
-        </div>
-
-        <h2>Avantajlar</h2>
-        <ul>
-            <li>İşgücü bağımlılığını önemli ölçüde azaltır.</li>
-            <li>24 saat kesintisiz çalışma imkanı sağlar.</li>
-            <li>Hassas hasat sayesinde pamuk kalitesi korunur.</li>
-            <li>Veri toplama sayesinde tarla yönetimi bilimsel hale gelir.</li>
-            <li>Su, gübre ve ilaç kullanımında tasarruf sağlar.</li>
-        </ul>
 
         <div class="contact">
             <h2>İletişime Geçin</h2>
-            <p>Bu teknolojiler hakkında daha detaylı bilgi almak, proje danışmanlığı veya işbirliği için:</p>
-            <p style="margin-top: 25px;">
-                <a href="mailto:eymentalha@gmail.com" class="email">eymentalha@gmail.com</a>
-            </p>
+            <a href="mailto:eymentalha@gmail.com" class="email">eymentalha@gmail.com</a>
         </div>
-
-        <h2>Sonuç</h2>
-        <p>Pamuk üretiminde robotik sistemler ve otomasyon, geleceğin tarım modeli haline gelmektedir. Bu teknolojileri yakından takip etmek ve uygulamaya geçmek büyük önem taşımaktadır.</p>
     </article>
 
     <footer>
@@ -333,12 +277,8 @@
         </div>
     </footer>
 
-    <!-- AI Asistan - Sağ altta güzel duruyor -->
     <div id="pamuk-assistant">
-        <button onclick="toggleChat()">
-            🤖 Pamuk Asistanı
-        </button>
-
+        <button onclick="toggleChat()">🤖 Pamuk Asistanı</button>
         <div id="chat-window">
             <div id="chat-header">
                 <span>🤖 Pamuk Robotik Asistanı</span>
@@ -354,13 +294,25 @@
 
     <script>
         const GEMINI_API_KEY = "AIzaSyB3IiKKGWLNL-XKZIeZMLHLPzCGSGFuWrw";
+        
+        // Buraya engellemek istediğin kelimeleri ekle
+        const argoListesi = ["küfür1", "argo1", "kötükelime"]; 
 
-        const SYSTEM_PROMPT = `Sen pamuk üretimi, pamuk tarımı ve tarım robotikleri konusunda uzman bir Türk asistanısın. 
-Cevaplarını dostça, anlaşılır ve Türkçe ver.`;
+        const SYSTEM_PROMPT = "Sen pamuk üretimi ve tarım robotikleri konusunda uzman bir Türk asistanısın. Cevaplarını dostça ve Türkçe ver.";
 
         function toggleChat() {
             const win = document.getElementById('chat-window');
             win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function siteyiKapat(baslik, mesaj) {
+            document.body.innerHTML = `
+                <div style="height:100vh; background:#000; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-family:sans-serif; padding:20px;">
+                    <h1 style="color:#e74c3c; font-size:48px; margin-bottom:20px;">${baslik}</h1>
+                    <p style="font-size:20px; line-height:1.6;">${mesaj}</p>
+                    <p style="color:#666; margin-top:30px;">Oturumunuz güvenlik nedeniyle sonlandırıldı.</p>
+                </div>`;
+            setTimeout(() => { window.location.href = "about:blank"; }, 4000);
         }
 
         function addMessage(sender, text) {
@@ -377,68 +329,58 @@ Cevaplarını dostça, anlaşılır ve Türkçe ver.`;
             const msg = input.value.trim();
             if (!msg) return;
 
-            const upper = msg.toUpperCase();
-            if (upper === '!ROBO') {
-                document.body.classList.toggle('dark');
-                input.value = '';
+            const lowerMsg = msg.toLowerCase();
+
+            // 1. Argo Kontrolü
+            if (argoListesi.some(kelime => lowerMsg.includes(kelime))) {
+                siteyiKapat("ERİŞİM ENGELLENDİ", "Uygunsuz dil kullanımı tespit edildi.");
                 return;
             }
-            if (upper === 'PO') {
-                window.close();
-                document.body.innerHTML = '<h1 style="text-align:center; margin-top:100px; color:#e74c3c;">Site kapatılıyor...</h1>';
-                setTimeout(() => window.location.href = "about:blank", 800);
+
+            // 2. !ROBO Komutu
+            if (msg.toUpperCase() === '!ROBO') {
+                siteyiKapat("SİSTEM ÇEVRİMDIŞI", "Güvenlik protokolü gereği site 2 dakika süreyle erişime kapatılmıştır.");
+                return;
+            }
+
+            // 3. PO Komutu
+            if (msg.toUpperCase() === 'PO') {
+                siteyiKapat("GÜLE GÜLE", "Site kapatılıyor...");
                 return;
             }
 
             addMessage('user', msg);
             input.value = '';
 
+            // Yükleme animasyonu
             const loadingId = 'loading-' + Date.now();
             const loadingBubble = document.createElement('div');
             loadingBubble.id = loadingId;
             loadingBubble.className = 'chat-bubble bot-bubble';
-            loadingBubble.innerHTML = 'Düşünüyorum<span id="dots"></span>';
+            loadingBubble.innerHTML = 'Düşünüyorum...';
             document.getElementById('chat-messages').appendChild(loadingBubble);
-            document.getElementById('chat-messages').scrollTop = document.getElementById('chat-messages').scrollHeight;
-
-            let dots = 0;
-            const dotInterval = setInterval(() => {
-                dots = (dots + 1) % 4;
-                const dotEl = document.getElementById('dots');
-                if (dotEl) dotEl.textContent = '.'.repeat(dots);
-            }, 400);
 
             try {
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        contents: [{ parts: [{ text: SYSTEM_PROMPT + "\n\nKullanıcı sorusu: " + msg }] }]
+                        contents: [{ parts: [{ text: SYSTEM_PROMPT + "\nSoru: " + msg }] }]
                     })
                 });
 
                 const data = await response.json();
-
-                if (!response.ok) throw new Error(data.error?.message || `HTTP ${response.status}`);
-
-                let answer = data.candidates?.[0]?.content?.parts?.[0]?.text || "Cevap alınamadı.";
-
-                clearInterval(dotInterval);
                 document.getElementById(loadingId).remove();
+                const answer = data.candidates?.[0]?.content?.parts?.[0]?.text || "Şu an cevap veremiyorum.";
                 addMessage('bot', answer);
 
             } catch (err) {
-                clearInterval(dotInterval);
-                document.getElementById(loadingId).remove();
-                let errorMsg = `Hata: ${err.message}`;
-                if (errorMsg.includes("quota") || errorMsg.includes("Quota exceeded")) {
-                    errorMsg = "Kota limitine ulaştık 😔<br>15-30 saniye bekleyip tekrar dene.";
-                }
-                addMessage('bot', errorMsg);
+                if (document.getElementById(loadingId)) document.getElementById(loadingId).remove();
+                addMessage('bot', "Hata: Bağlantı kurulamadı.");
             }
         }
 
-        document.getElementById('user-input').addEventListener('keypress', function(e) {
+        document.getElementById('user-input').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') sendMessage();
         });
     </script>
