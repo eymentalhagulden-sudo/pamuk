@@ -133,7 +133,7 @@
         }
         body.dark .pamuk-image { box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
 
-        /* AI Asistan Stilleri */
+        /* AI Asistan */
         #pamuk-assistant {
             position: fixed;
             bottom: 25px;
@@ -255,7 +255,6 @@
         </div>
     </section>
 
-    <!-- Pamuk Tarlası Resmi -->
     <div class="container" style="margin-top: -40px; padding: 0 25px;">
         <img src="https://source.unsplash.com/random/1200x600/?cotton-field" alt="Pamuk Tarlası" class="pamuk-image">
     </div>
@@ -266,15 +265,12 @@
         
         <h2>3D Modellerimiz</h2>
 
-        <!-- Pamuk Bitkisi Resmi -->
         <img src="https://source.unsplash.com/random/800x500/?cotton-plant" alt="Pamuk Bitkisi" class="pamuk-image">
 
         <div class="model-section">
             <h2>1. Pamuk Bitkisi ve Sensör Sistemi (Interaktif 3D)</h2>
             <p>Aşağıdaki butona tıklayarak modeli yeni sekmede inceleyebilirsiniz. Fare ile döndürebilir, yakınlaştırabilir ve detaylarını görebilirsiniz.</p>
-            <a href="https://www.meshy.ai/s/RgfiRi" target="_blank" class="model-btn">
-                3D Modeli İncele →
-            </a>
+            <a href="https://www.meshy.ai/s/RgfiRi" target="_blank" class="model-btn">3D Modeli İncele →</a>
         </div>
 
         <div class="model-section">
@@ -367,11 +363,9 @@
                 utterance.rate = 1.0;
                 utterance.pitch = 1.0;
                 utterance.volume = 1.0;
-
                 const voices = speechSynthesis.getVoices();
                 const turkishVoice = voices.find(v => v.lang === 'tr-TR' || v.lang.startsWith('tr'));
                 if (turkishVoice) utterance.voice = turkishVoice;
-
                 speechSynthesis.speak(utterance);
             }
         }
@@ -439,7 +433,6 @@
             }
         }
 
-        // Ses tuşu
         document.getElementById('speak-btn').onclick = () => {
             const lastBot = document.querySelector('.bot-bubble:last-child');
             if (lastBot) speak(lastBot.textContent);
